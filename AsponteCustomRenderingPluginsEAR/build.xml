@@ -1,0 +1,52 @@
+<project name="Canon Explore WCM Assets" default="package" basedir=".">
+	<property file="./build.properties"></property>
+	<property name="application.name" value="${app.name}" />
+	<property name="root.dir" value="./" />
+	<property name="build.dir" value="${root.dir}/build" />
+	<property name="dist.dir" value="${dist.dir.desktop}" />
+	<property name="archives.dir" value="${build.dir}/archives" />
+	<property name="static.directory" value="${code.directory}" />
+	<property name="static.directory.src" value="${static.directory}/src" />
+	<property name="static.classes.dir" value="${static.directory}/WebContent/WEB-INF/classes" />
+
+	<property name="dependent.libs" value="${static.directory}/dependencies" />
+
+	
+	<target name="compile">		
+		<delete dir="${static.classes.dir}" />	
+		<mkdir dir="${static.classes.dir}" />
+		<javac destdir="${static.classes.dir}" debug="true" debuglevel="lines,vars,source">	
+			<classpath>											
+				<fileset dir="${dependent.libs}" />					
+			</classpath>
+			<src path="${static.directory.src}" />
+		</javac>		
+	</target>
+	
+	<target name="package" depends="clean, compile">
+		<tstamp>
+			<format property="TODAY" pattern="MM/dd/yyyy HH:mm:ss:sss zzz" />
+		</tstamp>
+		<echo file="${static.directory}/WebContent/build_info.txt">This artifact was built at ${TODAY}</echo>
+		<war destfile="${archives.dir}/${application.name}.war" webxml="${static.directory}/WebContent/WEB-INF/web.xml">
+			<fileset dir="${static.directory}/WebContent">
+				<include name="jsp/" />
+				<include name="**/*.txt" />
+			</fileset>
+			<webinf dir="${static.directory}/WebContent/WEB-INF" includes="**/*.*" excludes="**/.dm/**"/>			
+		</war>
+
+		<ear destfile="${dist.dir}/${app.name}.ear" basedir="${archives.dir}" appxml="${root.dir}/META-INF/application.xml" update="true">
+		</ear>
+	</target>
+
+	<target name="clean">
+		<delete includeEmptyDirs="true" failonerror="false">
+		  	<fileset dir="${build.dir}/dist" includes="**/*" defaultexcludes="no"/>
+			<fileset dir="${build.dir}/archives" includes="**/*" defaultexcludes="no"/>
+			<fileset dir="${static.directory}/WebContent" includes="**/build_info.txt" defaultexcludes="no"/>
+		</delete>
+	</target>
+
+	
+</project>

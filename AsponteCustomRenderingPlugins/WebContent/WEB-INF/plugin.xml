@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="com.asponte.customrendering" name="AsponteCustomRendering" version="1.0.1" provider-name="IBM">	
+	<extension point="com.ibm.workplace.wcm.api.RenderingPlugin" id="AsponteReadProperty">
+     <provider class="com.asponte.customrendering.AsponteReadProperty"/>
+   </extension>  
+</plugin>
