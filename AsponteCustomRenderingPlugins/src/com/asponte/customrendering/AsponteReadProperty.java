@@ -30,6 +30,8 @@ public class AsponteReadProperty implements RenderingPluginDefinition
    private static final Logger s_log = Logger.getLogger(CLASS_NAME);
    // cmk testing
    private final String NAME = "AsponteReadProperty Plugin";
+   
+   private final String TEST_UPDATE = "AsponteReadProperty Plugin";
 
    private final String TITLE = "AsponteReadProperty plugin";
 
