@@ -1,0 +1,32 @@
+<project name="GeneratePAA" default="packagePAA" basedir=".">
+	<property file="./build.properties"></property>
+	<property name="application.name" value="${app.name}" />
+	<property name="root.dir" value="./" />
+	<property name="build.dir" value="${root.dir}/build" />
+	<property name="dist.dir" value="${dist.dir.desktop}" />
+	<property name="archives.dir" value="${build.dir}/archives" />
+	<property name="static.directory" value="${code.directory}" />
+	<property name="static.directory.src" value="${static.directory}/src" />
+	<property name="static.classes.dir" value="${static.directory}/WebContent/WEB-INF/classes" />
+
+	<property name="dependent.libs" value="${static.directory}/dependencies" />
+		
+	<target name="packageApps">
+			<subant target="package">
+				<fileset dir="../AsponteCustomRenderingPluginsEAR" includes="build.xml"/>
+			</subant>
+		</target>
+	
+	<target name="packagePAA" depends="packageApps">
+		<tstamp>
+			<format property="TODAY" pattern="MM/dd/yyyy HH:mm:ss:sss zzz" />
+		</tstamp>
+		<echo file="${dist.dir}/build_info.txt">This artifact was built at ${TODAY}</echo>
+		<!-- 
+		// now update the .paa file 
+		-->
+		
+		
+		</target>
+	
+</project>
