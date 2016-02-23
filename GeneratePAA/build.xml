@@ -3,9 +3,11 @@
 	</property>
 	<property name="application.name" value="${app.name}" />
 	<property name="root.dir" value="./" />
+	<property name="build.date" value="" />
 	<property name="build.dir" value="${root.dir}/build" />
 	<property name="dist.dir" value="${dist.dir.desktop}" />
 	<property name="dist.temp.dir" value="${dist.dir.temp}" />
+	<property name="placeholder.dir" value="${dist.dir.temp}/placeholderassets" />
 	<property name="archives.dir" value="${build.dir}/archives" />
 	<property name="static.directory" value="${code.directory}" />
 	<property name="static.directory.src" value="${static.directory}/src" />
@@ -15,11 +17,12 @@
 
 	<target name="packageApps">
 		<subant target="package">
-			<fileset dir="../AsponteCustomRenderingPluginsEAR" includes="build.xml"/>
+			<fileset dir="../" includes="*/build.xml" excludes="GeneratePAA/build.xml" />
 		</subant>
+
 	</target>
 
-	<target name="packagePAA" depends="packageApps">
+	<target name="packagePAA" depends="packageApps,generatePAAFolder">
 		<tstamp>
 			<format property="TODAY" pattern="MM/dd/yyyy HH:mm:ss:sss zzz" />
 		</tstamp>
@@ -27,11 +30,68 @@
 		<!-- 
 		// now update the .paa file
 		// copy anything in .ear to the / CanonDeploy\components\CanonDeploy\installableApps\ear
+		<copy file="./${dist.temp.dir}/placeholderassets/placeholder.paa" tofile="${dist.dir}/${application.name}.paa">
+		</copy>
 		-->
-		<zip destfile="${dist.dir}/${application.name}.paa" update="true">
-			<zipfileset dir="${dist.temp.dir}/ear" prefix="${application.name}/components/${application.name}/installableApps/ear"/>
-		</zip>
+		<antcall target="buildPAAFile">
+
+		</antcall>
+
+
 
 	</target>
 
+	<!-- prepare the paa to be zipped.  In the placholderassets dir, the paa folder will be copied to buildPAA folder
+	some values will be updated based on the name of the asset -->
+
+	<target name="generatePAAFolder" depends="clean">
+		<buildnumber />
+		<tstamp>
+			<format property="build.date" pattern="MM/dd/yyyy" locale="en,US" />
+		</tstamp>
+		<mkdir dir="./${dist.temp.dir}/placeholderassets/buildPAA/${application.name}/components/${application.name}"/>
+		<mkdir dir="./${dist.temp.dir}/placeholderassets/buildPAA/${application.name}/documentation"/>
+		<copy file="./${dist.temp.dir}/placeholderassets/paa/sdd.xml" tofile="./${dist.temp.dir}/placeholderassets/buildPAA/${application.name}/sdd.xml">
+			<filterset>
+				<filter token="BUILDDATE" value="${build.date}" />
+				<filter token="BUILDVERSION" value="${build.number}" />
+				<filter token="APPNAME" value="${application.name}" />
+			</filterset>
+		</copy>
+		<copy file="./${dist.temp.dir}/placeholderassets/paa/documentation/readme.txt" tofile="./${dist.temp.dir}/placeholderassets/buildPAA/${application.name}/documentation/readme.txt"/>
+		<copy todir="./${dist.temp.dir}/placeholderassets/buildPAA/${application.name}/components/${application.name}">
+			<fileset dir="./${dist.temp.dir}/placeholderassets/paa/components/appName"/>
+			<!-- <globmapper from="placeholder.*" to="${application.name}.*"/> -->
+			<filterset>
+				<filter token="BUILDDATE" value="${build.date}" />
+				<filter token="BUILDVERSION" value="${build.number}" />
+				<filter token="APPNAME" value="${application.name}" />
+			</filterset>
+		</copy>
+		<!-- now move the individual files to rename-->
+		<move file="${dist.temp.dir}/placeholderassets/buildPAA/${application.name}/components/${application.name}/placeholder.properties" tofile="${dist.temp.dir}/placeholderassets/buildPAA/${application.name}/components/${application.name}/${application.name}.properties"/>
+		<move file="${dist.temp.dir}/placeholderassets/buildPAA/${application.name}/components/${application.name}/version/placeholder.component" tofile="${dist.temp.dir}/placeholderassets/buildPAA/${application.name}/components/${application.name}/version/${application.name}.component"/>
+
+		<copy todir="./${dist.temp.dir}/placeholderassets/buildPAA/${application.name}/components/${application.name}/installableApps/ear" flatten="true">
+			<fileset dir="../" includes="*/build/dist/*.ear"/>
+		</copy>
+
+
+	</target>
+
+	<!-- now zip file file-->
+	<target name="buildPAAFile">
+		<zip destfile="${dist.dir}/CanonDeploy.paa"
+		       basedir="${dist.temp.dir}/placeholderassets/buildPAA"
+		  />
+	</target>
+
+	<target name="clean">
+		<delete includeEmptyDirs="true" failonerror="false">
+			<fileset dir="${build.dir}/dist" includes="**/*" defaultexcludes="no"/>
+			<fileset dir="${dist.temp.dir}/placeholderassets/buildPAA" includes="**/*"/>
+		</delete>
+	</target>
+
 </project>
+
