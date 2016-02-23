@@ -37,8 +37,7 @@
 		</war>
 
 		<ear destfile="${dist.dir}/${app.name}.ear" basedir="${archives.dir}" appxml="${root.dir}/META-INF/application.xml" update="true">
-		</ear>
-		<copy file="${dist.dir}/${app.name}.ear" todir="../GeneratePAA/build/temp/ear"/>
+		</ear>		
 	</target>
 
 	<target name="clean">
