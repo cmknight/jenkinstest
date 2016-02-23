@@ -1,0 +1,77 @@
+<project name="New Web Custom theme" default="package" basedir=".">
+	<property file="./build.properties"></property>
+	<property name="application.name" value="${app.name}" />
+	<property name="root.dir" value="./" />
+	<property name="static.name" value="${static.name}" />
+	<property name="static.directory" value="${static.code.directory}" />
+	<property name="dynamic.name" value="${dynamic.name}" />
+	<property name="dynamic.directory" value="${dynamic.code.directory}" />
+	<property name="dynamic.classes.dir" value="${dynamic.directory}/WebContent/WEB-INF/classes" />
+	<property name="dynamic.src.dir" value="${dynamic.directory}/src" />
+	<property name="build.dir" value="${root.dir}/build" />
+	<property name="dist.dir" value="${build.dir}/dist" />
+	<property name="archives.dir" value="${build.dir}/archives" />	
+	<property name="dependent.libs" value="${dynamic.directory}/WebContent/WEB-INF/lib" />	
+	
+	<target name="compile">	
+		<delete dir="${dynamic.classes.dir}" />
+		<mkdir dir="${dynamic.classes.dir}" />
+		
+		<javac destdir="${dynamic.classes.dir}" debug="true" debuglevel="lines,vars,source">						
+			<classpath>											
+				<fileset dir="${dependent.libs}" />				
+			</classpath>
+			<src path="${dynamic.src.dir}" />
+		</javac>
+			
+		<copy todir="${dynamic.classes.dir}">
+   			<fileset dir="${dynamic.src.dir}">
+   				<exclude name="**/*.java" />   				
+   			</fileset>
+		</copy>		
+	</target>
+
+	<target name="package" depends="clean, compile">
+		<tstamp>
+		  <format property="TODAY" pattern="MM/dd/yyyy HH:mm:ss:sss zzz" />
+		</tstamp>
+		<echo file="${static.directory}/WebContent/build_info.txt">This artifact was built at ${TODAY}</echo>
+		<echo file="${dynamic.directory}/WebContent/build_info.txt">This artifact was built at ${TODAY}</echo>
+		<war destfile="${archives.dir}/${static.name}.war" webxml="${static.directory}/WebContent/WEB-INF/web.xml">
+			<fileset dir="${static.directory}/WebContent">
+				<include name="common-resources/" />
+				<include name="layout-templates/" />
+				<include name="skins/" />
+				<include name="themes/" />
+				<include name="**/*.txt" />
+				<exclude name="**/.dm/**"/>
+			</fileset>
+			<webinf dir="${static.directory}/WebContent/WEB-INF" includes="**/*.*" excludes="**/.dm/**"/>		
+		</war>
+		<war destfile="${archives.dir}/${dynamic.name}.war" webxml="${dynamic.directory}/WebContent/WEB-INF/web.xml">
+			<fileset dir="${dynamic.directory}/WebContent">
+				<include name="skins/" />
+				<include name="themes/" />
+				<include name="**/*.txt" />
+				<exclude name="**/.dm/**"/>
+			</fileset>
+			<webinf dir="${dynamic.directory}/WebContent/WEB-INF" includes="**/*.*" excludes="**/*.jar, **/.dm/**" />
+			<lib dir="${dynamic.directory}/WebContent/WEB-INF/lib" includes="**/*.jar" excludes="**/.dm/**" ></lib>  
+		</war>
+	
+		<ear destfile="${dist.dir}/${app.name}.ear" basedir="${archives.dir}" appxml="${root.dir}/META-INF/application.xml" update="true">	
+		</ear>		
+	</target>
+
+	<target name="clean">
+		<delete includeEmptyDirs="true" failonerror="false">
+		  	<fileset dir="${build.dir}/dist" includes="**/*" defaultexcludes="no"/>
+			<fileset dir="${build.dir}/archives" includes="**/*" defaultexcludes="no"/>
+			<fileset dir="${dynamic.classes.dir}" includes="**/*" defaultexcludes="no"/>
+			<fileset dir="${dynamic.directory}/WebContent" includes="**/build_info.txt" defaultexcludes="no"/>
+			<fileset dir="${static.directory}/WebContent" includes="**/build_info.txt" defaultexcludes="no"/>
+		</delete>
+	</target>
+
+	
+</project>

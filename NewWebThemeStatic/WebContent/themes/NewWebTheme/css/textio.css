@@ -1,0 +1,40 @@
+body.ephox-candy-mountain,
+body.ephox-candy-mountain h1,
+body.ephox-candy-mountain h2,
+body.ephox-candy-mountain h3,
+body.ephox-candy-mountain h4,
+body.ephox-candy-mountain h5,
+body.ephox-candy-mountain h6,
+body.ephox-candy-mountain p
+
+{
+
+   font-weight: 100;
+   font-family:"OpticSans Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+body.ephox-candy-mountain strong,
+body.ephox-candy-mountain b{
+ 	font-family:"OpticSans Medium";
+ 	font-weight: normal;
+}
+
+body.ephox-candy-mountain .alignleft,
+body.ephox-candy-mountain img.alignleft {
+	display: inline;
+	float: left;
+  margin-right: 1.5em;
+}
+body.ephox-candy-mountain .alignright,
+body.ephox-candy-mountain img.alignright {
+	display: inline;
+	float: right;
+  margin-left: 1.5em;
+}
+body.ephox-candy-mountain .aligncenter,
+body.ephox-candy-mountain img.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

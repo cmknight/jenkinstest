@@ -1,0 +1,1 @@
+freewall.createPlugin({centering:function(t,n){var r=t.runtime;this.addCustomEvent("onGridArrange",function(t){var a=1*n.attr("data-wall-width"),e=n.width(),l=(e-a)/2;for(var i in r.blocks){var o=r.blocks[i];null!=o.left&&(o.left+=l)}})}});

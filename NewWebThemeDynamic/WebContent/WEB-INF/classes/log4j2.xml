@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{ABSOLUTE} %5p %c{1}:%L - %m%n"/>
+    </Console>
+    <RollingFile name="RollingFile" fileName="/weblogs/NewWeb/NewWebTheme.log" filePattern="/weblogs/NewWeb/$${date:yyyy-MM}/NewWebTheme-%d{MM-dd-yyyy}-%i.log.gz">
+      <PatternLayout pattern="%d{ABSOLUTE} | %X{username} | %5p %c{1}:%L - %m%n"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="25 MB"/>
+      </Policies>
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <Root level="error">      
+      <AppenderRef ref="RollingFile"/>
+    </Root>
+  </Loggers>
+</Configuration>

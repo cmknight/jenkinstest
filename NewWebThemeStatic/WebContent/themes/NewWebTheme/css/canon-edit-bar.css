@@ -1,0 +1,50 @@
+/* Portal wpToolbarActionBar CSS fix */
+
+/*
+@media screen and (max-width: 768px) {
+	header.main-nav {
+		box-shadow: 0px 2px 2px 1px #adadad;
+		-webkit-box-shadow: 0px 2px 2px 1px #adadad;
+		-moz-box-shadow: 0px 2px 2px 1px #adadad;
+		-o-box-shadow: 0px 2px 2px 1px #adadad;
+	}
+}*/
+
+@media screen and (min-width: 768px) {
+
+
+	header.site-header {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 99;
+		transition: top 0.2s ease-in-out;
+		height: 130px;
+	}
+	
+	header.nav-up {
+		top: -130px;
+	}
+	
+	.lotusui30dojo .wpthemeMainContent {
+		padding-top: 110px;
+	}
+
+
+
+	header.site-header {
+		height: 205px;
+	}
+	header.nav-up {
+		top: -210px;
+	}
+	header.breadcrumbs {
+		box-shadow: 0px 2px 2px 1px #adadad;
+		-webkit-box-shadow: 0px 2px 2px 1px #adadad;
+		-moz-box-shadow: 0px 2px 2px 1px #adadad;
+		-o-box-shadow: 0px 2px 2px 1px #adadad;
+	}
+	.lotusui30dojo .wpthemeMainContent {
+		padding-top: 205px;
+	}
+}

@@ -1,0 +1,236 @@
+@font-face {
+    font-family: 'apex';
+    src: url('../fonts/apex-book.woff') format('woff');
+}
+@font-face {
+    font-family: 'apex';
+    src: url('../fonts/apex-medium.woff') format('woff');
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'apex';
+    src: url('../fonts/apex-light.woff') format('woff');
+    font-weight: 300;
+}
+
+body {
+  font-family: 'apex';
+}
+
+.progress {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* 
+Style Tweaks For My Cannon Ribbons
+Prototype: mycanon.html
+
+Used by:
+MC-2-2-6-My-Wish-List.html -  Vertical Ribbon Solid
+MC-2-2-5-My-Address-Book.html - Vertical Ribbon Solid
+MC-2-2-4-Manage-Communications.html - Vertical Ribbon Solid
+MC-2-2-3-My-Profile.html - Based on One Picture Ribbon with two buttons
+*/
+
+/* 
+h3 font-size subject to change when new font introduced
+Sizing approximates prototype based on current font defined in canon-styles.css
+*/
+
+.mycanon-ribbon h3,
+.icon-lg {
+	font-size: 4.5rem;  
+}
+
+.image-max {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+	.mycanon-ribbon h3{
+		text-align: center;
+	}
+	.mycanon-ribbon .cbtn-container{
+		text-align: center;
+
+	}
+	.mycanon-ribbon .cbtn{
+		float:none !important;
+		margin: 10px auto;
+	}
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+@media (min-width: 768px) {
+	.mycanon-ribbon h3{
+		text-align: left;
+	}
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 1200px) {
+}
+
+/* #MC-2-2-1-My-Products */
+.mc-2-2-1-my-products .my-products__product {
+  text-align: center;
+}
+
+.mc-2-2-1-my-products .cbtn {
+  width: 100%;
+}
+
+.mc-2-2-1-my-products figure {
+  height: 13em;
+}
+
+.mc-2-2-1-my-products .my-products__product-information {
+  display: block;
+  height: 2.5em;
+}
+
+.mc-2-2-1-my-products .my-products__product-information .fa {
+  margin-right: .5em;
+}
+
+.mc-2-2-1-my-products .ribbonWrap {
+  overflow: visible;
+}
+
+.mycanon-ribbon .small-lines {
+  line-height: 1.75rem;
+}
+
+.mycanon-ribbon a.cf-white:hover {
+  color: #ccc;
+}
+
+/* Override canon styles due to specificity in canon-styles.css
+   not allowing them to render. */
+.mycanon-ribbon .text-strong {
+  font-weight: 700;
+}
+
+@media(min-width: 769px) {
+  .add-padding-sm {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .padding-left-sm {
+    padding-left: 20px !important;
+    padding-right: 0;
+  }
+  .padding-right-sm {
+    padding-right: 20px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .padding-right-lg {
+    padding-right: 20px;
+  }
+  .padding-left-lg {
+    padding-left: 20px;
+  }
+}
+
+@media(min-width: 769px) and (max-width: 1199px) {
+  .add-padding-md {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media(max-width: 768px) {
+  .padding-left-sm {
+    padding-left: 0;
+  }
+  .no-side-padding-xs {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .padding-right-sm {
+    padding-right: 0;
+  }
+  .add-padding-sm {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .xs-full {
+    width: 100%;
+  }
+  .padding-right-xs {
+    padding-right: 20px;
+  }
+  .padding-left-xs {
+    padding-left: 20px;
+  }
+}
+
+.add-padding-right {
+  padding-right: 20px;
+}
+
+.add-padding-left {
+  padding-left: 20px;
+}
+
+.add-icon-padding-h1-top {
+  padding-top: 30px;
+}
+
+.add-icon-padding-h1-left {
+  padding-left: 10px;
+}
+
+.inline-header {
+  display: inline;
+}
+
+.subscription-table .row .th {
+  border-bottom: 0 !important;
+}
+
+.subscription-table .row.tr {
+  border: 0;
+  border-bottom-width: 1px;
+  border-style: dotted;
+  border-color: #e6e6e6;
+}
+
+.subscription-table .row.tr:nth-child(2n) {
+  background-color: #fff;
+}
+
+.subscription-table .cbtn {
+  width: 100%;
+}
+
+.text-large {
+  font-size: 2em;
+}
+
+.add-margin-left {
+  margin-left: 20px;
+}
+
+.add-margin-right {
+  margin-right: 20px !important;
+}
+
+.no-margin-left {
+  margin-left: 0;
+}
+
+.no-margin-right {
+  margin-right: 0;
+}
+
+.no-side-margin {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}

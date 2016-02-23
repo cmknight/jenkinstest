@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="initial-scale=1">
+
+<!-- rel=dynamic-content indicates an element that is replaced with the contents produced by the specified href. 
+	 dyn-cs:* URIs are resolved using the WP DynamicContentSpotMappings resource environment provider. These values can
+	 also be set using theme metadata if a theme is specified in the URI (e.g. @tl:oid:theme_unique_name). -->
+<link rel="dynamic-content" href="co:head">
+<link rel="dynamic-content" href="res:NewWebThemeDynamic/themes/html/dynamicSpots/head.jsp">
+<!-- rendering is delegated to the specified href for each locale -->
+</head>
+<body class="lotusui30dojo locale_en">	
+		<header role="banner" class="site-header navbar">
+		
+			<!-- site toolbar -->
+			<a rel="dynamic-content" href="dyn-cs:id:NewWebTheme_toolbar"></a>
+
+			<div class="wpthemeBanner" id="themeBanner" name="themeBanner" style="display:none">
+				<div class="wpthemeBannerInner">
+					<div class="wpthemeInner">
+
+						<a rel="dynamic-content" href="dyn-cs:id:NewWebTheme_commonActions"></a>
+						<a rel="dynamic-content" href="dyn-cs:id:NewWebTheme_mobileNav"></a>
+						<div class="wpthemeClear"></div>
+					</div>
+				</div>
+			</div><!--end main banner-->
+		
+		<a rel="dynamic-content" href="res:NewWebThemeDynamic/themes/html/dynamicSpots/ribbon.jsp"></a>		
+		<div id="siteControl">
+			<a rel="dynamic-content" href="res:NewWebThemeDynamic/themes/html/dynamicSpots/mainNav.jsp"></a>
+		</div>
+		<a rel="dynamic-content" href="res:NewWebThemeDynamic/themes/html/dynamicSpots/breadcrumb.jsp"></a>	
+		<a rel="dynamic-content" href="res:NewWebThemeDynamic/themes/html/dynamicSpots/megaMenu.jsp"></a>	
+
+		<div class="wpthemeSecondaryBanner">
+<!-- 				<a rel="dynamic-content" href="dyn-cs:id:NewWebTheme_secondaryNav"></a> -->
+				<div class="wpthemeClear"></div>
+			</div><!--end secondary banner-->
+		</header>
+
+		<div class="wpthemeMainContent" role="main" aria-label="IBM WebSphere Portal">
+			<div class="wpthemeInner">	
+				<!-- asa markup contributions for pages -->	
+				<a rel="dynamic-content" href="dyn-cs:id:wp_analytics_dynspot"></a>
+<!-- 				<a rel="dynamic-content" href="dyn-cs:id:NewWebTheme_crumbTrail"></a> -->
+				<div class="wpthemeClear"></div>
+				<a rel="dynamic-content" href="dyn-cs:id:NewWebTheme_status"></a>
+			</div>		
+
+			<!-- required - do not remove -->
+			<a rel="dynamic-content" href="state.portlet:portlet?include=windowState&include=portletMode&mime-type=text/html"></a>
+			
+			<div id="layoutContainers" class="wpthemeLayoutContainers wpthemeLayoutContainersHidden" >	
+				<div class="wpthemeInner" style="width: 100%;">					
+					<a rel="dynamic-content" href="dyn-cs:id:NewWebTheme_layout"></a>
+					<div class="wpthemeClear"></div>
+				</div>
+			</div>
+		</div><!--end main content-->
+		
+		
+		<a rel="dynamic-content" href="res:NewWebThemeDynamic/themes/html/dynamicSpots/footer.jsp"></a>
+		
+		
+    <!-- This is responsible for bootstrapping the configuration for the javascript framework. 
+        This is located here instead of the head section to improve client performance. -->
+	<div class="wpthemeComplementaryContent" id="wpthemeComplementaryContent" role="region" aria-labelledby="wpthemeComplementaryContentText">
+		<span class="wpthemeAltText" id="wpthemeComplementaryContentText" >Complementary Content</span>
+		<a rel="dynamic-content" href="co:config"></a>
+	</div>
+	
+	<a rel="dynamic-content" href="res:NewWebThemeDynamic/themes/html/dynamicSpots/opinionLabs.jsp"></a>
+</body>
+</html>
