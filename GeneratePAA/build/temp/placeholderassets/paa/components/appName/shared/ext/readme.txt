@@ -1,0 +1,1 @@
+Directory to contain any jar files that need to be copied across to the PortalServer/shared/ext directory.

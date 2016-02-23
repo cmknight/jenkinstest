@@ -1,0 +1,1 @@
+Place any war files containing portlets that you wish to have automatically installed to WebSphere portal in this directory.

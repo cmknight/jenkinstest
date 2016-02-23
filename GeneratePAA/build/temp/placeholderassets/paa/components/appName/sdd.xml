@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-L21                                                          -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 2006  All Rights Reserved                 -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- This is a template file used to create SDD files for component    -->
+<!-- developers.  Each component participating in the Configuration    -->
+<!-- Frameworks must contain one of these files. Any content that is   -->
+<!-- surrounded in @ symbols should be replaced by the implementor     -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<iudd:iudd
+	xmlns:iudd="http://www.ibm.com/xmlns/prod/autonomic/solutioninstall/IUDD"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:OSRT="http://www.ibm.com/xmlns/prod/autonomic/resourcemodel/OS/resourcetypes"
+	xmlns:OSAT="http://www.ibm.com/xmlns/prod/autonomic/resourcemodel/OS/artifacttypes"
+	xmlns:J2EERT="http://www.ibm.com/xmlns/prod/autonomic/resourcemodel/J2EE/resourcetypes"
+	xsi:schemaLocation="http://www.ibm.com/xmlns/prod/autonomic/solutioninstall/IUDD ../iudd/iudd.xsd"
+	schemaVersion="2.0.0" buildID="112220" buildDate="2006-01-19T12:00:00">
+
+	<packageIdentity contentType="Component">
+		<name>components/CanonDeploy</name>
+		<version>8.0.0.0</version>
+		<displayName key="d0001" default="components/@APPNAME@" />
+		<manufacturer>
+			<displayName key="DU_01" default="IBM" />
+		</manufacturer>
+	</packageIdentity>
+
+	<topology>
+		<resource type="OSRT:OperatingSystem" id="OS" />
+	</topology>
+
+	<content xsi:type="iudd:RootIUContent">
+		<rootIU id="components/@APPNAME@">
+			<variables>
+				<parameters>
+					<parameter name="installLocation" defaultValue="/usr/dummy.offr.1" />
+				</parameters>
+			</variables>
+		</rootIU>
+	</content>
+
+</iudd:iudd>

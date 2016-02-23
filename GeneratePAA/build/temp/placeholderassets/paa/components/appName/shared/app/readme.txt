@@ -1,0 +1,1 @@
+Directory to contain any jar files or runtime properties files that need to be copied across to the PortalServer/shared/app directory.

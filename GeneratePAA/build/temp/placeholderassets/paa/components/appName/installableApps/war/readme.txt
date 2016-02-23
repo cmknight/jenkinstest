@@ -1,0 +1,1 @@
+This directory will contain any war files that are not to be automatically installed to WebSphere portal and have custom extension point tasks to perform their installation.
